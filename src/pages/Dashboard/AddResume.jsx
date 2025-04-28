@@ -1,17 +1,19 @@
 import { Loader2, PlusSquare } from "lucide-react";
 import React, { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
 import { v4 as uuidv4 } from "uuid";
 import GlobalApi from "@/service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const AddResume = () => {
   const [openDialog, setOpenDialog] = useState(false);
   const [resumeTitle, setResumeTitle] = useState();
   const { user } = useUser();
   const [loading, setLoading] = useState(false);
+  const navigation = useNavigate();
 
   const onCreate = () => {
     setLoading(true);
@@ -26,9 +28,10 @@ const AddResume = () => {
     };
     GlobalApi.CreateNewResume(data).then(
       (res) => {
-        console.log(res);
+        console.log(res.data.data.documentId);
         if (res) {
           setLoading(false);
+          navigation("/dashboard/resume/" + res.data.data.documentId + "/edit");
         }
       },
       (error) => {

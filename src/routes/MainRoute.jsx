@@ -1,6 +1,7 @@
 import Layout from "@/layouts/Layout";
 import SignInPage from "@/pages/auth/SignInPage";
 import Dashboard from "@/pages/Dashboard/Dashboard";
+import EditResume from "@/pages/Dashboard/EditResume";
 import HomePage from "@/pages/Home/HomePage";
 import React from "react";
 import { createBrowserRouter } from "react-router-dom";
@@ -12,6 +13,10 @@ const MainRoute = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/dashboard/resume/:resumeId/edit",
+        element: <EditResume />,
       },
     ],
   },
