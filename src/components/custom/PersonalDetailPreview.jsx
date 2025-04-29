@@ -6,14 +6,9 @@ function PersonalDetailPreview({ resumeInfo }) {
     { content: resumeInfo?.phone, type: "text" },
     { content: resumeInfo?.email, type: "text" },
     {
-      content: "GitHub",
+      content: resumeInfo?.sosmedTitle,
       type: "link",
-      href: resumeInfo?.github,
-    },
-    {
-      content: "LinkedIn",
-      type: "link",
-      href: resumeInfo?.linkedIn,
+      href: resumeInfo?.sosmedUrl,
     },
   ].filter((item) => item.content);
 
