@@ -84,7 +84,7 @@ function Summery({ enableNext }) {
               <Brain /> Generate from AI
             </Button>
           </div>
-          <Textarea className="mt-2" required onChange={(e) => setSummery(e.target.value)} value={summery} />
+          <Textarea className="mt-5 p-5" required onChange={(e) => setSummery(e.target.value)} value={summery} />
           <div className="mt-2 flex justify-end">
             <Button type="submit" disabled={loading}>
               {loading ? <LoaderCircle className="animate-spin" /> : "Save"}

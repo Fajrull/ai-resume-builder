@@ -6,7 +6,7 @@ import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
 
 function FormSection() {
-  const [activeFormIndex, setActiveFormIndex] = useState(1);
+  const [activeFormIndex, setActiveFormIndex] = useState(3);
   const [enableNext, setEnableNext] = useState(false);
 
   return (
