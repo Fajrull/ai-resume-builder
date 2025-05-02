@@ -64,7 +64,6 @@ function Summery({ enableNext }) {
         enableNext(true);
         setLoading(false);
         toast("Details updated");
-        setSummery("");
       },
       (error) => {
         setLoading(false);

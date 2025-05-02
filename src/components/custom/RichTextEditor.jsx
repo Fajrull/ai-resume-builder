@@ -17,8 +17,10 @@ function RichTextEditor({ onRichTextEditorChange, index }) {
 
       const prompt =
         "Position title:{positionTitle} " +
-        resumeInfo?.experience[index].title +
+        resumeInfo?.experience[index].positionTitle +
         ". Based on the position title, write 5-7 concise bullet points describing relevant responsibilities or achievements suitable for a resume. Return only HTML <ul><li>...</li></ul> format. Do not include experience level or JSON.";
+
+      console.log(resumeInfo?.experience[index].positionTitle);
 
       const aiResult = await generateSummary(prompt);
       const cleanedResult = aiResult.replace(/```html|```/g, "").trim();
