@@ -88,7 +88,7 @@ function Experience({ enableNext }) {
 
     GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
       (res) => {
-        enableNext(true);
+        // enableNext(true);
         setLoading(false);
         toast("Details experience updated");
       },
@@ -108,7 +108,7 @@ function Experience({ enableNext }) {
 
           {experienceList.map((item, index) => (
             <div key={index}>
-              <div className="grid grid-cols-2 gap-2 border p-3 my-5 rounded-lg">
+              <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
                 <div>
                   <label className="text-xs">Position Title</label>
                   <Input name="positionTitle" value={item.positionTitle} onChange={(event) => handleChange(index, event)} />

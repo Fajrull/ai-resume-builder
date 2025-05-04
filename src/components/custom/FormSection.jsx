@@ -4,10 +4,11 @@ import { Button } from "../ui/button";
 import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
+import Education from "./forms/Education";
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
-  // const [enableNext, setEnableNext] = useState(false);
+  // const [enableNext, setEnableNext] = useState(true);
 
   return (
     <div>
@@ -27,7 +28,7 @@ function FormSection() {
         </div>
       </div>
       {/* Personal Detail */}
-      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : null}
+      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : activeFormIndex == 4 ? <Education /> : null}
 
       {/* Experience */}
 
