@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { LoaderCircle, Plus, Trash2 } from "lucide-react";
 import React, { useState } from "react";
+import { toast } from "sonner";
 
 function Education() {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,13 @@ function Education() {
     ]);
   };
 
-  const removeEducation = () => {};
+  const removeEducation = () => {
+    if (educationList.length > 1) {
+      setEducationList(educationList.slice(0, -1));
+    } else {
+      toast.warning("At least one education must be present");
+    }
+  };
 
   const onSave = () => {};
 
