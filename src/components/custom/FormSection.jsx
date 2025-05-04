@@ -6,8 +6,8 @@ import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
 
 function FormSection() {
-  const [activeFormIndex, setActiveFormIndex] = useState(3);
-  const [enableNext, setEnableNext] = useState(false);
+  const [activeFormIndex, setActiveFormIndex] = useState(1);
+  // const [enableNext, setEnableNext] = useState(false);
 
   return (
     <div>
@@ -21,19 +21,13 @@ function FormSection() {
               <ArrowLeft />
             </Button>
           )}
-          <Button disabled={!enableNext} className="flex gap-2" size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
+          <Button className="flex gap-2" size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
             Next <ArrowRight />
           </Button>
         </div>
       </div>
       {/* Personal Detail */}
-      {activeFormIndex == 1 ? (
-        <PersonalDetail enableNext={(v) => setEnableNext(v)} />
-      ) : activeFormIndex == 2 ? (
-        <Summery enableNext={(v) => setEnableNext(v)} />
-      ) : activeFormIndex == 3 ? (
-        <Experience enableNext={(v) => setEnableNext(v)} />
-      ) : null}
+      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : null}
 
       {/* Experience */}
 

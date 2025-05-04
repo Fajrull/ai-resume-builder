@@ -7,7 +7,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 
-const PersonalDetail = ({ enableNext }) => {
+const PersonalDetail = () => {
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const params = useParams();
   const [formData, setFormData] = useState();
@@ -18,7 +18,7 @@ const PersonalDetail = ({ enableNext }) => {
   }, []);
 
   const handleInputChange = (e) => {
-    enableNext(false);
+    // enableNext(false);
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -40,7 +40,7 @@ const PersonalDetail = ({ enableNext }) => {
     GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
       (res) => {
         console.log(res);
-        enableNext(true);
+        // enableNext(true);
         setLoading(false);
         toast("Details updated");
       },

@@ -16,11 +16,13 @@ function Summery({ enableNext }) {
   const [aiGenerateSummeryList, setAiGenerateSummeryList] = useState();
 
   useEffect(() => {
-    summery &&
-      setResumeInfo({
-        ...resumeInfo,
-        summery: summery,
-      });
+    setSummery(resumeInfo?.summery || "");
+  }, []);
+
+  useEffect(() => {
+    if (summery !== undefined) {
+      setResumeInfo({ ...resumeInfo, summery });
+    }
   }, [summery]);
 
   const GenerateSummeryFromAI = async () => {

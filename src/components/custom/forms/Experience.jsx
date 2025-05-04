@@ -47,7 +47,11 @@ function Experience({ enableNext }) {
   };
 
   const removeExperience = () => {
-    setExperienceList((prev) => prev.slice(0, -1));
+    if (experienceList.length > 1) {
+      setExperienceList((prev) => prev.slice(0, -1));
+    } else {
+      toast.warning("At least one experience must be present");
+    }
   };
 
   const handleRichTextEditor = (e, name, index) => {
@@ -62,6 +66,12 @@ function Experience({ enableNext }) {
       experience: experienceList,
     });
   }, [experienceList]);
+
+  useEffect(() => {
+    if (resumeInfo?.experience?.length > 0) {
+      setExperienceList(resumeInfo.experience);
+    }
+  }, []);
 
   const onSave = (e) => {
     e.preventDefault();

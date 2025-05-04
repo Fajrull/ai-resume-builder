@@ -6,8 +6,7 @@ import generateSummary from "@/service/AIModel";
 import { toast } from "sonner";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 
-function RichTextEditor({ onRichTextEditorChange, index }) {
-  const [value, setValue] = useState();
+function RichTextEditor({ value, onRichTextEditorChange, index }) {
   const [loading, setLoading] = useState(false);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
 
@@ -25,7 +24,6 @@ function RichTextEditor({ onRichTextEditorChange, index }) {
       const aiResult = await generateSummary(prompt);
       const cleanedResult = aiResult.replace(/```html|```/g, "").trim();
 
-      setValue(cleanedResult);
       onRichTextEditorChange({ target: { value: cleanedResult } });
       toast.success("Summary generated successfully");
     } catch (err) {
@@ -54,7 +52,6 @@ function RichTextEditor({ onRichTextEditorChange, index }) {
         <Editor
           value={value}
           onChange={(e) => {
-            setValue(e.target.value);
             onRichTextEditorChange(e);
           }}
         >
