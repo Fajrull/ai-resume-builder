@@ -1,3 +1,4 @@
+import formatDate from "@/utils/formatDate";
 import React from "react";
 
 function EducationPreview({ resumeInfo }) {
@@ -16,7 +17,7 @@ function EducationPreview({ resumeInfo }) {
           <h2 className="text-xs flex justify-between">
             {education?.degree} in {education?.major}
             <span>
-              {education?.startDate} - {education?.endDate}
+              {formatDate(education?.startDate)} - {education?.currentlyEducating ? "Present" : formatDate(education?.endDate)}
             </span>
           </h2>
           <p className="text-xs my-2">{education?.description}</p>

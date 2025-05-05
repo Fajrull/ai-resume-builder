@@ -1,12 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { ResumeInfoContext } from "@/context/ResumeInfoContext";
 import { LoaderCircle, Plus, Trash2 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { toast } from "sonner";
 
 function Education() {
   const [loading, setLoading] = useState(false);
+  const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [educationList, setEducationList] = useState([
     {
       universityName: "",
@@ -19,9 +21,17 @@ function Education() {
   ]);
 
   const handleChange = (index, event) => {
-    const values = [...educationList];
-    values[index][event.target.name] = event.target.value;
-    setEducationList(values);
+    const newEntries = [...educationList];
+    const { name, value, type, checked } = event.target;
+    if (type === "checkbox" && name === "currentlyEducating") {
+      newEntries[index][name] = checked;
+      if (checked) {
+        newEntries[index]["endDate"] = "";
+      }
+    } else {
+      newEntries[index][name] = value;
+    }
+    setEducationList(newEntries);
   };
 
   const addNewEducation = () => {
@@ -33,6 +43,7 @@ function Education() {
         major: "",
         startDate: "",
         endDate: "",
+        currentlyEducating: false,
         description: "",
       },
     ]);
@@ -48,6 +59,13 @@ function Education() {
 
   const onSave = () => {};
 
+  useEffect(() => {
+    setResumeInfo({
+      ...resumeInfo,
+      education: educationList,
+    });
+  }, [educationList]);
+
   return (
     <div>
       <div className="p-5 shadow-lg rounded-lg border-t-primary border-t-4 mt-5">
@@ -57,29 +75,33 @@ function Education() {
           {educationList.map((education, index) => (
             <div key={index}>
               <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
-                <div>
+                <div className="col-span-2">
                   <label>University Name</label>
-                  <Input name="universityName" onChange={(e) => handleChange(index, e)} />
+                  <Input name="universityName" value={education.universityName} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Degree</label>
-                  <Input name="degree" onChange={(e) => handleChange(index, e)} />
+                  <Input name="degree" value={education.degree} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Major</label>
-                  <Input name="major" onChange={(e) => handleChange(index, e)} />
+                  <Input name="major" value={education.major} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Start Date</label>
-                  <Input name="startDate" onChange={(e) => handleChange(index, e)} />
+                  <Input type="date" value={education.startDate} name="startDate" onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>End Date</label>
-                  <Input name="endDate" onChange={(e) => handleChange(index, e)} />
+                  <Input type="date" name="endDate" value={education.endDate} onChange={(e) => handleChange(index, e)} disabled={education.currentlyEducating} />
+                  <div className="flex gap-2 my-2">
+                    <input type="checkbox" name="currentlyEducating" checked={education.currentlyEducating} onChange={(event) => handleChange(index, event)} />
+                    <label className="text-sm">I currently studying here</label>
+                  </div>
                 </div>
-                <div>
+                <div className="col-span-2">
                   <label>Description</label>
-                  <Textarea name="description" onChange={(e) => handleChange(index, e)} />
+                  <Textarea name="description" value={education.description} onChange={(e) => handleChange(index, e)} />
                 </div>
               </div>
               <div className="flex justify-between mt-5">

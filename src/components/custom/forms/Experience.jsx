@@ -28,7 +28,14 @@ function Experience({ enableNext }) {
   const handleChange = (index, event) => {
     const newEntries = [...experienceList];
     const { name, value, type, checked } = event.target;
-    newEntries[index][name] = type === "checkbox" ? checked : value;
+    if (type === "checkbox" && name === "currentlyWorking") {
+      newEntries[index][name] = checked;
+      if (checked) {
+        newEntries[index]["endDate"] = "";
+      }
+    } else {
+      newEntries[index][name] = value;
+    }
     setExperienceList(newEntries);
   };
 

@@ -59,35 +59,35 @@ const PersonalDetail = () => {
         <div className="grid grid-cols-2 mt-5 gap-3">
           <div>
             <label className="text-sm">First Name</label>
-            <Input name="firstName" defaultValue={resumeInfo?.firstName} required onChange={handleInputChange} />
+            <Input name="firstName" value={resumeInfo?.firstName} required onChange={handleInputChange} />
           </div>
           <div>
             <label className="text-sm">Last Name</label>
-            <Input name="lastName" defaultValue={resumeInfo?.lastName} required onChange={handleInputChange} />
+            <Input name="lastName" value={resumeInfo?.lastName} required onChange={handleInputChange} />
           </div>
           <div className="col-span-2 ">
             <label className="text-sm">Job Title</label>
-            <Input name="jobTitle" defaultValue={resumeInfo?.jobTitle} required onChange={handleInputChange} />
+            <Input name="jobTitle" value={resumeInfo?.jobTitle} required onChange={handleInputChange} />
           </div>
           <div className="col-span-2">
             <label className="text-sm">Address</label>
-            <Input name="address" defaultValue={resumeInfo?.address} required onChange={handleInputChange} />
+            <Input name="address" value={resumeInfo?.address} required onChange={handleInputChange} />
           </div>
           <div>
             <label className="text-sm">Phone</label>
-            <Input name="phone" defaultValue={resumeInfo?.phone} required onChange={handleInputChange} />
+            <Input name="phone" value={resumeInfo?.phone} required onChange={handleInputChange} />
           </div>
           <div>
             <label className="text-sm">Email</label>
-            <Input name="email" defaultValue={resumeInfo?.email} required onChange={handleInputChange} />
+            <Input name="email" value={resumeInfo?.email} required onChange={handleInputChange} />
           </div>
           <div>
             <label className="text-sm">Sosial Media</label>
-            <Input name="sosmedTitle" defaultValue={resumeInfo?.sosmedTitle} onChange={handleInputChange} />
+            <Input name="sosmedTitle" value={resumeInfo?.sosmedTitle} onChange={handleInputChange} />
           </div>
           <div>
             <label className="text-sm">URL Sosial Media</label>
-            <Input name="sosmedUrl" defaultValue={resumeInfo?.sosmedUrl} onChange={handleInputChange} />
+            <Input name="sosmedUrl" value={resumeInfo?.sosmedUrl} onChange={handleInputChange} />
           </div>
         </div>
         <div className="mt-3 flex justify-end">
