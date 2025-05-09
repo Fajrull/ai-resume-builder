@@ -8,19 +8,19 @@ import { useParams } from "react-router-dom";
 import GlobalApi from "@/service/GlobalApi";
 import { toast } from "sonner";
 
-const formField = {
-  positionTitle: "",
-  companyName: "",
-  city: "",
-  state: "",
-  startDate: "",
-  endDate: "",
-  currentlyWorking: false,
-  workSummery: "",
-};
-
 function Experience({ enableNext }) {
-  const [experienceList, setExperienceList] = useState([formField]);
+  const [experienceList, setExperienceList] = useState([
+    {
+      positionTitle: "",
+      companyName: "",
+      city: "",
+      state: "",
+      startDate: "",
+      endDate: "",
+      currentlyWorking: false,
+      workSummery: "",
+    },
+  ]);
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [loading, setLoading] = useState(false);
   const params = useParams();
@@ -100,8 +100,8 @@ function Experience({ enableNext }) {
         toast("Details experience updated");
       },
       (err) => {
-        toast.error("Failed to update");
         setLoading(false);
+        toast.error("Server error, please try again");
       }
     );
   };

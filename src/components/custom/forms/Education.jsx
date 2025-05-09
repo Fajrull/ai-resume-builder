@@ -2,12 +2,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ResumeInfoContext } from "@/context/ResumeInfoContext";
+import GlobalApi from "@/service/GlobalApi";
 import { LoaderCircle, Plus, Trash2 } from "lucide-react";
 import React, { useContext, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 function Education() {
   const [loading, setLoading] = useState(false);
+  const params = useParams();
   const { resumeInfo, setResumeInfo } = useContext(ResumeInfoContext);
   const [educationList, setEducationList] = useState([
     {
@@ -16,6 +19,7 @@ function Education() {
       major: "",
       startDate: "",
       endDate: "",
+      currentlyEducating: false,
       description: "",
     },
   ]);
@@ -57,7 +61,28 @@ function Education() {
     }
   };
 
-  const onSave = () => {};
+  const onSave = () => {
+    setLoading(true);
+    const data = {
+      data: {
+        education: educationList.map(({ id, ...edu }) => ({
+          ...edu,
+          endDate: edu.currentlyEducating ? null : edu.endDate,
+        })),
+      },
+    };
+    GlobalApi.UpdateResumeDetail(params?.resumeId, data).then(
+      (res) => {
+        console.log(res);
+        setLoading(false);
+        toast("Details updated!");
+      },
+      (error) => {
+        setLoading(false);
+        toast.error("Server error, please try again");
+      }
+    );
+  };
 
   useEffect(() => {
     setResumeInfo({
@@ -65,6 +90,12 @@ function Education() {
       education: educationList,
     });
   }, [educationList]);
+
+  useEffect(() => {
+    if (resumeInfo?.education?.length > 0) {
+      setEducationList(resumeInfo.education);
+    }
+  }, []);
 
   return (
     <div>
