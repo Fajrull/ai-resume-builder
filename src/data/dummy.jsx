@@ -70,52 +70,16 @@ export default {
   ],
   skills: [
     {
-      id: 1,
-      name: "Angular",
+      name: "Java",
     },
     {
-      id: 1,
+      name: "Javascript",
+    },
+    {
       name: "React",
     },
     {
-      id: 1,
-      name: "MySql",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
-    },
-    {
-      id: 1,
-      name: "React Native",
+      name: "Tailwind CSS",
     },
   ],
 };

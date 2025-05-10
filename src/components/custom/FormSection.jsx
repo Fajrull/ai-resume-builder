@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, LayoutGrid } from "lucide-react";
 import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
+import Skills from "./forms/Skills";
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
@@ -22,19 +23,14 @@ function FormSection() {
               <ArrowLeft />
             </Button>
           )}
-          <Button className="flex gap-2" size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
-            Next <ArrowRight />
-          </Button>
+          {activeFormIndex < 5 && (
+            <Button size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
+              Next <ArrowRight />
+            </Button>
+          )}
         </div>
       </div>
-      {/* Personal Detail */}
-      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : activeFormIndex == 4 ? <Education /> : null}
-
-      {/* Experience */}
-
-      {/* Education Detail */}
-
-      {/* Skills */}
+      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : activeFormIndex == 4 ? <Education /> : activeFormIndex == 5 ? <Skills /> : null}
     </div>
   );
 }
