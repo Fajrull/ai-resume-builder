@@ -14,7 +14,7 @@ function PersonalDetailPreview({ resumeInfo }) {
 
   return (
     <div>
-      <h2 className="font-bold text-xl text-center" style={{ color: resumeInfo?.themeColor }}>
+      <h2 className="font-bold text-xl text-center">
         {resumeInfo?.firstName} {resumeInfo?.lastName}
       </h2>
       <h2 className="text-center text-sm font-medium my-2">{resumeInfo?.jobTitle}</h2>
@@ -24,7 +24,7 @@ function PersonalDetailPreview({ resumeInfo }) {
           <React.Fragment key={index}>
             {index > 0 && <span className="mx-1 text-xs">|</span>}
             {item.type === "link" ? (
-              <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-xs underline" style={{ color: resumeInfo?.themeColor }}>
+              <a href={item.href} target="_blank" rel="noopener noreferrer" className="text-xs underline">
                 {item.content}
               </a>
             ) : (
@@ -33,7 +33,7 @@ function PersonalDetailPreview({ resumeInfo }) {
           </React.Fragment>
         ))}
       </div>
-      <hr className="border-[1.5px] my-2" style={{ borderColor: resumeInfo?.themeColor }} />
+      <hr className="border-[1.5px] my-2" style={{ borderColor: "GrayText" }} />
     </div>
   );
 }

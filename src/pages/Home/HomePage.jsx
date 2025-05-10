@@ -96,13 +96,13 @@ const HomePage = () => {
               <p className="text-muted-foreground">Create professional CVs in minutes</p>
             </div>
             <div className="flex gap-8">
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://www.linkedin.com/in/muhammadfajrulkhaq/" className="text-muted-foreground hover:text-foreground">
                 LinkedIn
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://github.com/Fajrull" className="text-muted-foreground hover:text-foreground">
                 GitHub
               </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground">
+              <a href="https://www.instagram.com/muhammadfajrull_/" className="text-muted-foreground hover:text-foreground">
                 Instagram
               </a>
             </div>
