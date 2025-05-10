@@ -6,11 +6,12 @@ import Summery from "./forms/Summery";
 import Experience from "./forms/Experience";
 import Education from "./forms/Education";
 import Skills from "./forms/Skills";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 
 function FormSection() {
   const [activeFormIndex, setActiveFormIndex] = useState(1);
   // const [enableNext, setEnableNext] = useState(true);
+  const { resumeId } = useParams();
 
   return (
     <div>
@@ -32,14 +33,24 @@ function FormSection() {
               <ArrowLeft />
             </Button>
           )}
-          {activeFormIndex < 5 && (
-            <Button size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
-              Next <ArrowRight />
-            </Button>
-          )}
+          <Button size="sm" onClick={() => setActiveFormIndex(activeFormIndex + 1)}>
+            Next <ArrowRight />
+          </Button>
         </div>
       </div>
-      {activeFormIndex == 1 ? <PersonalDetail /> : activeFormIndex == 2 ? <Summery /> : activeFormIndex == 3 ? <Experience /> : activeFormIndex == 4 ? <Education /> : activeFormIndex == 5 ? <Skills /> : null}
+      {activeFormIndex == 1 ? (
+        <PersonalDetail />
+      ) : activeFormIndex == 2 ? (
+        <Summery />
+      ) : activeFormIndex == 3 ? (
+        <Experience />
+      ) : activeFormIndex == 4 ? (
+        <Education />
+      ) : activeFormIndex == 5 ? (
+        <Skills />
+      ) : activeFormIndex == 6 ? (
+        <Navigate to={`/my-resume/${resumeId}/view`} />
+      ) : null}
     </div>
   );
 }
