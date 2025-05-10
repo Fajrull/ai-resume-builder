@@ -19,17 +19,25 @@ function ViewResume() {
     GetResumeInfo();
   }, []);
 
+  const handleDownload = () => {
+    window.print();
+  };
+
   return (
     <ResumeInfoContext.Provider value={{ resumeInfo, setResumeInfo }}>
-      <Header />
-      <div className="my-10 mx-10 md:mx-20 lg:mx-36">
-        <h2 className="text-center text-2xl font-medium">Congrats! Your Ultimate AI geneares Resume is ready!</h2>
-        <p className="text-center text-gray-400">Now you are ready to download your resume and you can share unique resume url with your friends and family</p>
-        <div className="flex justify-between px-44 my-10">
-          <Button>Download</Button>
+      <div id="no-print">
+        <Header />
+        <div className="my-10 mx-10 md:mx-20 lg:mx-36">
+          <h2 className="text-center text-2xl font-medium">Congrats! Your Ultimate AI geneares Resume is ready!</h2>
+          <p className="text-center text-gray-400">Now you are ready to download your resume and you can share unique resume url with your friends and family</p>
+        </div>
+      </div>
+      <div className="my-10 mx-10 md:mx-20 lg:mx-150">
+        <div className="flex justify-end gap-5 my-5">
+          <Button onClick={handleDownload}>Download</Button>
           <Button>Share</Button>
         </div>
-        <div>
+        <div id="print-area">
           <ResumePreview />
         </div>
       </div>
