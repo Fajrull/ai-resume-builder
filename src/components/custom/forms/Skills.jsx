@@ -37,7 +37,7 @@ function Skills() {
 
     const data = {
       data: {
-        skills,
+        skills: skills.map(({ id, ...skill }) => skill),
       },
     };
 

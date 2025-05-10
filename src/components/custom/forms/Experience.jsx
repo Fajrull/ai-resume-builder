@@ -118,27 +118,27 @@ function Experience({ enableNext }) {
               <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
                 <div>
                   <label className="text-xs">Position Title</label>
-                  <Input name="positionTitle" value={item.positionTitle} onChange={(event) => handleChange(index, event)} />
+                  <Input name="positionTitle" value={item.positionTitle ?? ""} onChange={(event) => handleChange(index, event)} />
                 </div>
                 <div>
                   <label className="text-xs">Company Name</label>
-                  <Input name="companyName" value={item.companyName} onChange={(event) => handleChange(index, event)} />
+                  <Input name="companyName" value={item.companyName ?? ""} onChange={(event) => handleChange(index, event)} />
                 </div>
                 <div>
                   <label className="text-xs">City</label>
-                  <Input name="city" value={item.city} onChange={(event) => handleChange(index, event)} />
+                  <Input name="city" value={item.city ?? ""} onChange={(event) => handleChange(index, event)} />
                 </div>
                 <div>
                   <label className="text-xs">State</label>
-                  <Input name="state" value={item.state} onChange={(event) => handleChange(index, event)} />
+                  <Input name="state" value={item.state ?? ""} onChange={(event) => handleChange(index, event)} />
                 </div>
                 <div>
                   <label className="text-xs">Start Date</label>
-                  <Input type="date" name="startDate" value={item.startDate} onChange={(event) => handleChange(index, event)} />
+                  <Input type="date" name="startDate" value={item.startDate ?? ""} onChange={(event) => handleChange(index, event)} />
                 </div>
                 <div>
                   <label className="text-xs">End Date</label>
-                  <Input type="date" name="endDate" value={item.endDate} onChange={(event) => handleChange(index, event)} disabled={item.currentlyWorking} />
+                  <Input type="date" name="endDate" value={item.endDate ?? ""} onChange={(event) => handleChange(index, event)} disabled={item.currentlyWorking} />
                   <div className="flex gap-2 my-2">
                     <input type="checkbox" name="currentlyWorking" checked={item.currentlyWorking} onChange={(event) => handleChange(index, event)} />
                     <label className="text-sm">I currently work here</label>

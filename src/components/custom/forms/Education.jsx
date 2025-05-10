@@ -108,23 +108,23 @@ function Education() {
               <div className="grid grid-cols-2 gap-3 border p-3 my-5 rounded-lg">
                 <div className="col-span-2">
                   <label>University Name</label>
-                  <Input name="universityName" value={education.universityName} onChange={(e) => handleChange(index, e)} />
+                  <Input name="universityName" value={education.universityName ?? ""} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Degree</label>
-                  <Input name="degree" value={education.degree} onChange={(e) => handleChange(index, e)} />
+                  <Input name="degree" value={education.degree ?? ""} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Major</label>
-                  <Input name="major" value={education.major} onChange={(e) => handleChange(index, e)} />
+                  <Input name="major" value={education.major ?? ""} onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>Start Date</label>
-                  <Input type="date" value={education.startDate} name="startDate" onChange={(e) => handleChange(index, e)} />
+                  <Input type="date" value={education.startDate ?? ""} name="startDate" onChange={(e) => handleChange(index, e)} />
                 </div>
                 <div>
                   <label>End Date</label>
-                  <Input type="date" name="endDate" value={education.endDate} onChange={(e) => handleChange(index, e)} disabled={education.currentlyEducating} />
+                  <Input type="date" name="endDate" value={education.endDate ?? ""} onChange={(e) => handleChange(index, e)} disabled={education.currentlyEducating} />
                   <div className="flex gap-2 my-2">
                     <input type="checkbox" name="currentlyEducating" checked={education.currentlyEducating} onChange={(event) => handleChange(index, event)} />
                     <label className="text-sm">I currently studying here</label>
