@@ -1,7 +1,38 @@
 import Header from "@/components/custom/Header";
-import { ArrowRight, CheckCircle, Download, FileText, Star, Zap } from "lucide-react";
+import { ArrowRight, ChevronDown, Download, FileText, Zap } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
+
+  // FAQ data
+  const faqItems = [
+    {
+      question: "How does the AI-powered assistance work?",
+      answer:
+        "Our AI analyzes your input and suggests professional phrasing for your experience, skills, and summary sections. It helps you highlight relevant achievements and uses industry-specific language to make your CV stand out to recruiters and pass through Applicant Tracking Systems (ATS).",
+    },
+    {
+      question: "Can I download my CV for free?",
+      answer: "Yes! You can download your completed CV completely free of charge. We offer PDF downloads with no watermarks, subscriptions, or hidden fees. Your professional CV is yours to keep and use as you need.",
+    },
+    {
+      question: "Is my data secure when using this platform?",
+      answer:
+        "Absolutely. We take data privacy seriously. Your information is encrypted and never shared with third parties. You can delete your account and all associated data at any time. We only use your information to provide and improve our CV building service.",
+    },
+    {
+      question: "How can I make my CV stand out to employers?",
+      answer:
+        "Focus on quantifiable achievements rather than just listing responsibilities. Use action verbs, customize each CV for the specific job, and highlight relevant skills. Our AI assistant helps identify key accomplishments and phrases that will catch a recruiter's attention.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-background/95">
       <Header />
@@ -16,9 +47,9 @@ const HomePage = () => {
             </h1>
             <p className="text-xl text-muted-foreground">Our easy-to-use CV builder helps you craft a professional resume that showcases your skills and experience to potential employers.</p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
-              <button className="px-4 py-2 rounded-md bg-primary text-white font-medium flex items-center gap-2">
+              <Link to="/dashboard" className="cursor-pointer px-4 py-2 rounded-md bg-primary text-white font-medium flex items-center gap-2">
                 Create Your CV <ArrowRight className="h-4 w-4" />
-              </button>
+              </Link>
             </div>
             <div className="flex items-center gap-4 pt-4">
               <div className="flex -space-x-2">
@@ -76,14 +107,38 @@ const HomePage = () => {
         </div>
       </section>
 
+      {/* FAQ Section with Collapsible Items */}
+      <section className="container px-4 py-20 mx-auto">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Frequently Asked Questions</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">Everything you need to know about our CV builder</p>
+        </div>
+
+        <div className="max-w-3xl mx-auto space-y-4">
+          {faqItems.map((item, index) => (
+            <div key={index} className="border rounded-lg overflow-hidden">
+              <button onClick={() => toggleFaq(index)} className="flex justify-between items-center w-full p-4 text-left bg-card hover:bg-muted/50 transition-colors">
+                <h3 className="text-lg font-medium">{item.question}</h3>
+                <ChevronDown className={`h-5 w-5 text-primary transition-transform duration-200 ${openFaq === index ? "rotate-180" : ""}`} />
+              </button>
+              <div className={`overflow-hidden transition-all duration-300 ease-in-out ${openFaq === index ? "max-h-96 p-4" : "max-h-0"}`}>
+                <p className="text-muted-foreground">{item.answer}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="container px-4 py-20 mx-auto">
         <div className="bg-primary/10 rounded-2xl p-8 md:p-12 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Create Your Professional CV?</h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">Join thousands of professionals who have already created standout CVs with our builder</p>
-          <button className="px-4 py-2 rounded-md bg-primary text-white font-medium flex items-center gap-2 mx-auto">
-            Get Started Now <ArrowRight className="h-4 w-4" />
-          </button>
+          <Link to="/dashboard">
+            <button className="cursor-pointer px-4 py-2 rounded-md bg-primary text-white font-medium flex items-center gap-2 mx-auto">
+              Get Started Now <ArrowRight className="h-4 w-4" />
+            </button>
+          </Link>
         </div>
       </section>
 

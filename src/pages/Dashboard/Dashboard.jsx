@@ -1,5 +1,3 @@
-"use client";
-
 import ResumeCardItem from "@/components/custom/ResumeCardItem";
 import GlobalApi from "@/service/GlobalApi";
 import { useUser } from "@clerk/clerk-react";
