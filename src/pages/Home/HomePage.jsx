@@ -10,7 +10,7 @@ const HomePage = () => {
       <section className="container px-4 py-20 md:py-32 mx-auto">
         <div className="flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 space-y-6">
-            <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">Build Your Professional CV in Minutes</div>
+            <div className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-2">Build Your Professional CV with AI</div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
               Create a <span className="text-primary">standout CV</span> that gets you hired
             </h1>

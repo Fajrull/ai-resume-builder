@@ -30,8 +30,9 @@ function ViewResume() {
         <Header />
         <div className="w-full flex justify-center">
           <div className="mt-10 mx-10 md:mx-20 lg:mx-36">
-            <h2 className="text-center text-2xl font-medium">Congrats! Your Ultimate AI geneares Resume is ready!</h2>
-            <p className="text-center text-gray-400">Now you are ready to download your resume and you can share unique resume url with your friends and family</p>
+            <h2 className="text-center text-2xl font-medium">Congratulations! Your AI-generated resume is ready.</h2>
+            <p className="text-center text-gray-400">You can now download your resume and start using it to showcase your professional experience.</p>
+
             <div className="flex justify-end mt-5">
               <Button onClick={handleDownload}>
                 <Download /> Download

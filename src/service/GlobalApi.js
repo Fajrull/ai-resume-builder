@@ -3,12 +3,14 @@ import axios from "axios";
 const API_KEY = import.meta.env.VITE_STRAPI_API_KEY;
 
 const axiosClient = axios.create({
-  baseURL: "http://localhost:1337/api/",
+  baseURL: import.meta.env.VITE_BASE_URL + "/api/",
   headers: {
     "Content-Type": "application/json",
     Authorization: `Bearer ${API_KEY}`,
   },
 });
+
+console.log(import.meta.env.VITE_BASE_URL);
 
 const CreateNewResume = (data) => axiosClient.post("/user-resumes", data);
 const GetUserResume = (userEmail) => axiosClient.get("/user-resumes?filters[userEmail][$eq]=" + userEmail);

@@ -22,10 +22,6 @@ function FormSection() {
               <Home />
             </Button>
           </Link>
-
-          <Button variant="outline" size="sm" className="flex gap-2">
-            <LayoutGrid /> Theme
-          </Button>
         </div>
         <div className="flex gap-2">
           {activeFormIndex > 1 && (
